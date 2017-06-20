@@ -1,0 +1,93 @@
+
+BinaryBlinkLed.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000084  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000084  000000f8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000011  00000000  00000000  000000f8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000010c  2**2
+                  CONTENTS, READONLY
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	09 c0       	rjmp	.+18     	; 0x14 <__ctors_end>
+   2:	0e c0       	rjmp	.+28     	; 0x20 <__bad_interrupt>
+   4:	0d c0       	rjmp	.+26     	; 0x20 <__bad_interrupt>
+   6:	0c c0       	rjmp	.+24     	; 0x20 <__bad_interrupt>
+   8:	0b c0       	rjmp	.+22     	; 0x20 <__bad_interrupt>
+   a:	0a c0       	rjmp	.+20     	; 0x20 <__bad_interrupt>
+   c:	09 c0       	rjmp	.+18     	; 0x20 <__bad_interrupt>
+   e:	08 c0       	rjmp	.+16     	; 0x20 <__bad_interrupt>
+  10:	07 c0       	rjmp	.+14     	; 0x20 <__bad_interrupt>
+  12:	06 c0       	rjmp	.+12     	; 0x20 <__bad_interrupt>
+
+00000014 <__ctors_end>:
+  14:	11 24       	eor	r1, r1
+  16:	1f be       	out	0x3f, r1	; 63
+  18:	cf e9       	ldi	r28, 0x9F	; 159
+  1a:	cd bf       	out	0x3d, r28	; 61
+  1c:	02 d0       	rcall	.+4      	; 0x22 <main>
+  1e:	30 c0       	rjmp	.+96     	; 0x80 <_exit>
+
+00000020 <__bad_interrupt>:
+  20:	ef cf       	rjmp	.-34     	; 0x0 <__vectors>
+
+00000022 <main>:
+  22:	bb 9a       	sbi	0x17, 3	; 23
+  24:	bc 9a       	sbi	0x17, 4	; 23
+  26:	c3 98       	cbi	0x18, 3	; 24
+  28:	c4 98       	cbi	0x18, 4	; 24
+  2a:	2f e9       	ldi	r18, 0x9F	; 159
+  2c:	86 e8       	ldi	r24, 0x86	; 134
+  2e:	91 e0       	ldi	r25, 0x01	; 1
+  30:	21 50       	subi	r18, 0x01	; 1
+  32:	80 40       	sbci	r24, 0x00	; 0
+  34:	90 40       	sbci	r25, 0x00	; 0
+  36:	e1 f7       	brne	.-8      	; 0x30 <main+0xe>
+  38:	00 c0       	rjmp	.+0      	; 0x3a <main+0x18>
+  3a:	00 00       	nop
+  3c:	c3 9a       	sbi	0x18, 3	; 24
+  3e:	c4 98       	cbi	0x18, 4	; 24
+  40:	2f e9       	ldi	r18, 0x9F	; 159
+  42:	86 e8       	ldi	r24, 0x86	; 134
+  44:	91 e0       	ldi	r25, 0x01	; 1
+  46:	21 50       	subi	r18, 0x01	; 1
+  48:	80 40       	sbci	r24, 0x00	; 0
+  4a:	90 40       	sbci	r25, 0x00	; 0
+  4c:	e1 f7       	brne	.-8      	; 0x46 <__SREG__+0x7>
+  4e:	00 c0       	rjmp	.+0      	; 0x50 <__SREG__+0x11>
+  50:	00 00       	nop
+  52:	c3 98       	cbi	0x18, 3	; 24
+  54:	c4 9a       	sbi	0x18, 4	; 24
+  56:	2f e9       	ldi	r18, 0x9F	; 159
+  58:	86 e8       	ldi	r24, 0x86	; 134
+  5a:	91 e0       	ldi	r25, 0x01	; 1
+  5c:	21 50       	subi	r18, 0x01	; 1
+  5e:	80 40       	sbci	r24, 0x00	; 0
+  60:	90 40       	sbci	r25, 0x00	; 0
+  62:	e1 f7       	brne	.-8      	; 0x5c <__SREG__+0x1d>
+  64:	00 c0       	rjmp	.+0      	; 0x66 <__SREG__+0x27>
+  66:	00 00       	nop
+  68:	c3 9a       	sbi	0x18, 3	; 24
+  6a:	c4 9a       	sbi	0x18, 4	; 24
+  6c:	2f e9       	ldi	r18, 0x9F	; 159
+  6e:	86 e8       	ldi	r24, 0x86	; 134
+  70:	91 e0       	ldi	r25, 0x01	; 1
+  72:	21 50       	subi	r18, 0x01	; 1
+  74:	80 40       	sbci	r24, 0x00	; 0
+  76:	90 40       	sbci	r25, 0x00	; 0
+  78:	e1 f7       	brne	.-8      	; 0x72 <__SREG__+0x33>
+  7a:	00 c0       	rjmp	.+0      	; 0x7c <__SREG__+0x3d>
+  7c:	00 00       	nop
+  7e:	d3 cf       	rjmp	.-90     	; 0x26 <main+0x4>
+
+00000080 <_exit>:
+  80:	f8 94       	cli
+
+00000082 <__stop_program>:
+  82:	ff cf       	rjmp	.-2      	; 0x82 <__stop_program>
