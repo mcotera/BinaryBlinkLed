@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name JG_Conn)(type KiCad)(uri /home/company/Devel/lib/KiCad/NAP/jgnoss/modules/JG_Conn.pretty)(options "")(descr ""))
+  (lib (name JG_Misc)(type KiCad)(uri /home/company/Devel/lib/KiCad/NAP/jgnoss/modules/JG_Misc.pretty)(options "")(descr ""))
+  (lib (name mc_switch)(type KiCad)(uri /home/company/Devel/lib/KiCad/mcotera/modules/mc_switch.pretty)(options "")(descr ""))
+)
